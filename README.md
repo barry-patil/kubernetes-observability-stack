@@ -68,3 +68,9 @@ This means you can query both from Grafana — metrics and logs side by side. Us
 ## Kibana index pattern
 
 On first deploy, create the index pattern `kubernetes-logs-*` in Kibana. The important fields to add as column headers: `kubernetes.namespace_name`, `kubernetes.pod_name`, `log`, `level` (if your app uses structured logging).
+
+---
+
+## Architecture
+
+The full architecture diagram is in [architecture.drawio](./architecture.drawio). Open it at [app.diagrams.net](https://app.diagrams.net) — File → Open from Device → select the file.
