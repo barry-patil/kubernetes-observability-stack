@@ -1,0 +1,108 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Kubernetes Observability Stack">
+    <mxGraphModel dx="1200" dy="800" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1500" pageHeight="860" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+
+        <mxCell id="2" value="Kubernetes Observability Stack — Metrics + Logs + Dashboards" style="text;html=1;align=center;fontSize=16;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="900" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- EKS Cluster -->
+        <mxCell id="3" value="EKS Cluster" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#E7157B;strokeWidth=2;verticalAlign=top;fontSize=13;fontStyle=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="700" height="720" as="geometry"/>
+        </mxCell>
+
+        <!-- Application Pods -->
+        <mxCell id="10" value="Application Pods&#xa;(expose /metrics endpoint)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="110" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- kube-state-metrics -->
+        <mxCell id="11" value="kube-state-metrics&#xa;(pod, deploy, node state)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="360" y="110" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Prometheus -->
+        <mxCell id="20" value="Prometheus&#xa;ServiceMonitor + PrometheusRule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff7300;fontColor=#ffffff;strokeColor=#cc5a00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="240" width="260" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Alertmanager -->
+        <mxCell id="21" value="Alertmanager&#xa;→ PagerDuty / Slack" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="360" width="200" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Fluentd DaemonSet -->
+        <mxCell id="30" value="Fluentd DaemonSet&#xa;(runs on every node)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="240" width="220" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Log enrichment -->
+        <mxCell id="31" value="Enrich with K8s metadata&#xa;pod name, namespace, labels" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fff0;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="360" y="355" width="220" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Monitoring namespace -->
+        <mxCell id="40" value="namespace: monitoring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#ff7300;strokeWidth=1.5;verticalAlign=top;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="460" width="300" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="41" value="Grafana" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff7300;fontColor=#ffffff;strokeColor=#cc5a00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="500" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="42" value="Datasources:&#xa;Prometheus + Elasticsearch" style="text;html=1;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="555" width="220" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Logging namespace -->
+        <mxCell id="50" value="namespace: logging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;strokeWidth=1.5;verticalAlign=top;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="380" y="460" width="300" height="290" as="geometry"/>
+        </mxCell>
+
+        <!-- Elasticsearch -->
+        <mxCell id="51" value="Elasticsearch&#xa;StatefulSet + PVC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="500" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Kibana -->
+        <mxCell id="52" value="Kibana&#xa;Index: kubernetes-logs-*" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffde7;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="600" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Dashboards (outside cluster) -->
+        <mxCell id="60" value="Grafana Dashboards" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#ff7300;strokeWidth=2;verticalAlign=top;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="60" width="620" height="300" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="61" value="EKS Cluster Overview&#xa;CPU / Memory / Pod count / PVC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8f3;strokeColor=#cc5a00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="850" y="100" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="62" value="Application SLIs&#xa;Request rate / Error rate / p99 latency" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8f3;strokeColor=#cc5a00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="100" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="63" value="Log Volume by Namespace&#xa;Error rate trends / noisy services" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8f3;strokeColor=#cc5a00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="850" y="200" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Terraform -->
+        <mxCell id="70" value="Terraform&#xa;Provisions EKS + all K8s resources" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="440" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" value="scrape" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#cc5a00;strokeWidth=2;fontSize=9;" edge="1" source="20" target="10" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" value="scrape" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#cc5a00;strokeWidth=2;fontSize=9;" edge="1" source="20" target="11" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#b85450;strokeWidth=1.5;" edge="1" source="20" target="21" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" value="reads container logs" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#82b366;strokeWidth=2;fontSize=9;" edge="1" source="30" target="10" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#82b366;strokeWidth=1.5;" edge="1" source="30" target="31" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" value="ships logs" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#82b366;strokeWidth=2;fontSize=9;" edge="1" source="31" target="51" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d6b656;strokeWidth=1.5;" edge="1" source="51" target="52" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" value="datasource" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#cc5a00;strokeWidth=2;fontSize=9;" edge="1" source="41" target="20" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" value="datasource" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#cc5a00;strokeWidth=2;fontSize=9;" edge="1" source="41" target="51" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#cc5a00;strokeWidth=2;" edge="1" source="41" target="60" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
